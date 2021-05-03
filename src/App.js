@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Game from './components/Game/Game';
+import Result from './components/Result/Result';
+import Settings from './components/Settings/Settings';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [displayGame, setDesiplayGame] = useState(false);
+	const [dimensions, setDimensions] = useState({
+		width: 0,
+		height: 0,
+		win: 0
+	})
+	const [result, setResult] = useState(false);
+
+  	return (
+    	<div className="App flexCenter">
+    	  	{ !displayGame && <Settings setDesiplayGame={setDesiplayGame} setDimensions={setDimensions} /> }
+
+    	  	{ displayGame && <Game setResult={setResult} dimensions={dimensions} /> }
+
+			{ result && <Result result={result} setResult={setResult} setDesiplayGame={setDesiplayGame} /> }
+    	</div>
+  	);
 }
 
 export default App;

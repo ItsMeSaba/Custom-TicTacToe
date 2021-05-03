@@ -1,0 +1,15 @@
+table {
+    border-collapse: collapse;
+}
+
+td {
+    border: solid 1px white;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    /* padding: 5vh; */
+}
+
+.board {
+    display: grid;
+}
